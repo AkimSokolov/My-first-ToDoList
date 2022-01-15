@@ -1,0 +1,23 @@
+.todo-item-shell{
+    margin: auto;
+    height: 10vh;
+    width:31vw;
+    border: 1px solid #000;
+    margin-bottom: 2vh;
+    border-radius: 10px;
+    display: table;
+}
+
+.todo-item{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.change-priority{
+    max-width: 31vw;
+}
+
+.task-descriprion{
+    max-width: 31vw;
+}
+
