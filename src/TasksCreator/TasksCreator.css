@@ -5,7 +5,7 @@
     height: 10vh;
     border: none;
     border-radius: 10px;
-    max-width: 31vw;
+    max-width: 33vw;
     border: 1px solid #fff;
     
 }
@@ -16,7 +16,7 @@
 .ToDoForm-shell{
     margin:auto;
     height: 10vh;
-    width: 31vw ;
+    width: 33vw ;
     border: 1px solid #000;
     border-radius: 10px;
     margin-bottom: 2vh;
@@ -30,7 +30,7 @@
 .ToDoForm-textHolder{
    height: 7vh;
    font-size: 17px;
-   max-width: 31vw;
+   max-width: 33vw;
    border:none;
    border-radius: 10px;
 }

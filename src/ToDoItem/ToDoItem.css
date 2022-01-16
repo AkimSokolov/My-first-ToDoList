@@ -1,7 +1,7 @@
 .todo-item-shell{
     margin: auto;
     height: 10vh;
-    width:31vw;
+    width:33vw;
     border: 1px solid #000;
     margin-bottom: 2vh;
     border-radius: 10px;
@@ -19,5 +19,10 @@
 
 .task-descriprion{
     max-width: 31vw;
+}
+
+.task-descriprion-checked{
+    max-width: 31vw;
+    text-decoration: line-through;
 }
 

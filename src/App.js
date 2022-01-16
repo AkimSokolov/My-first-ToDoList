@@ -8,21 +8,35 @@ function App(){
     const [startId, SetStartId] = useState(0);
     const [startPriority, setStartPriority] = useState(0);
     
+    const reviseChecked = (currentTaksList) => {
+        const unchecked = currentTaksList.filter((item) => {return(item.checked === false)});
+        const checked = currentTaksList.filter((item) => {return(item.checked === true)});
+        const newTasksList = [...unchecked,...checked];
+        newTasksList.forEach((item,index) => {
+          item.priority=index;
+        })
+        return newTasksList;
+    }
+
     const createTask = (value) => {
         const currentId = startId;
         const currentPriority =startPriority;
-        const currentTasksList = [...tasksList];
-        SetStartId(currentId + 1);
-        setStartPriority(currentPriority + 1);
-        SetTasksList([...currentTasksList, {
+        const newTasksList = [...tasksList,{
           task: value,
           id: currentId,
           priority: currentPriority,
-        }])
+          checked: false,
+        }];
+        SetStartId(currentId + 1);
+        setStartPriority(currentPriority + 1);
+        SetTasksList(reviseChecked(newTasksList))
     }
 
     const handleChangePriority = (risingElementPriority) => {
         if(!(risingElementPriority % tasksList.length)){
+          return;
+        }
+        if (tasksList[risingElementPriority].checked){
           return;
         }
         const newPriority = risingElementPriority - 1;
@@ -47,14 +61,23 @@ function App(){
         setStartPriority(currentPriority);
     }
 
+    const handleChecked = (checkedElementPriority) => {
+        const newTasksList = [...tasksList];
+        newTasksList[checkedElementPriority].checked = !newTasksList[checkedElementPriority].checked;
+        SetTasksList(reviseChecked(newTasksList));
+    }
+    
+
     const toDoList = tasksList.map(item => {
       return(
         <ToDoItem
           key = {item.id}
           description = {item.task}
+          checked = {item.checked}
           handleUpgrade = {() => handleChangePriority(item.priority)}
           handleDowngrade = {() => handleChangePriority(item.priority+1)}
           handleRemove = {() => handleRemove(item.priority)}
+          handleChecked = {() => handleChecked(item.priority)}
         />
       )
     })
@@ -65,7 +88,7 @@ function App(){
           <h1>ToDo</h1>
          </div>
         <TasksCreatorForm
-        createTask = {(i) => createTask(i)}
+        createTask = {(value) => createTask(value)}
         /> 
        {toDoList}
       </div>

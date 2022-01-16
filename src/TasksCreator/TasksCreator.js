@@ -3,20 +3,20 @@ import './TasksCreator.css'
 
 function TasksCreatorForm(props){
     const [value, SetValue] = useState("");
+    
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (value === ""){
+            return
+        }
+        props.createTask(value);
+        SetValue("");
+    }
 
     return(
         <div className="ToDoForm-shell">
             <div className='ToDoForm'>
-                <form onSubmit={(event) => {
-                    event.preventDefault();
-                    if (value === ""){
-                        return
-                    }else {
-                        const currentValue = value;
-                        SetValue("");
-                        props.createTask(currentValue);
-                    }
-                }} >
+                <form onSubmit={(event) => handleSubmit(event)}>
                     <input type="submit" value="Create" className='tasks-creator-button'/>
                     <label>
                         <input 
