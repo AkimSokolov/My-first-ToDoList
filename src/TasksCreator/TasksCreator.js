@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import './TasksCreator.css'
 
 function TasksCreatorForm(props){
-    const [value, SetValue] = useState("");
+    const [value, setValue] = useState("");
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (value === ""){
+        if (value.trim() === ""){
             return
         }
-        props.createTask(value);
-        SetValue("");
+        props.createTask(value.trim());
+        setValue("");
     }
 
     return(
@@ -22,7 +22,7 @@ function TasksCreatorForm(props){
                         <input 
                             type="text" 
                             value={value} 
-                            onChange={(event) => SetValue(event.target.value)}
+                            onChange={(event) => setValue(event.target.value)}
                             placeholder="Create new task"
                             className='ToDoForm-textHolder'
                         />

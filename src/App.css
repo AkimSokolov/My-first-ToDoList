@@ -16,6 +16,20 @@
   text-align: center;
 }
 
+.sort-button{
+  float:right;
+  background-color: #fff;
+  border: 1px solid #000;
+}
+.current-sort-button{
+  float:right;
+  background-color: #899fa5;
+  border: 1px solid #000;
+}
+.sort-button:hover{
+  background-color: rgb(219, 215, 215);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

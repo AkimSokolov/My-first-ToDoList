@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './ToDoItem.css';
 
 function ToDoItem(props){
-    const [description, SetDescriprion] = useState(props.description);
-    const [disabled, SetDisabled] = useState(true);
+    const [description, setDescriprion] = useState(props.description);
+    const [disabled, setDisabled] = useState(true);
     
     return(
         <div className='todo-item-shell'>
@@ -20,14 +20,14 @@ function ToDoItem(props){
                     <input 
                         type="text" 
                         value={description} 
-                        onChange={(event) => SetDescriprion(event.target.value)}
+                        onChange={(event) => setDescriprion(event.target.value)}
                         className={props.checked ? 'task-descriprion-checked' : 'task-descriprion'}
                         disabled = {disabled}
                     />
                 </label>
                 <button 
                     className="change-descriprtion"
-                    onClick ={() => SetDisabled(!disabled)}
+                    onClick ={() => setDisabled(!disabled)}
                 >&#128393;</button>
                 <button 
                     className="remove-task"
@@ -36,7 +36,9 @@ function ToDoItem(props){
 
                 <input 
                     type="checkbox"
+                    checked = {props.checked}
                     className="todo-checkbox"
+                    onChange={() => {}}
                     onClick={() =>  props.handleChecked()}
                 />        
              </div>
